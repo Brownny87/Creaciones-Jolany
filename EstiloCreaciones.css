@@ -1,18 +1,95 @@
-* {margin: 0;padding: 0;box-sizing: border-box;}
-#header{ background: rgb(40, 17, 104);margin: auto; width: 100%; height:200px ;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
+  overflow-x: hidden;
+}
+
+.header {
+  background: rgb(40, 17, 104);
+  margin: auto;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.Logo {
+  width: 300px;
+  height: 150px;
+  padding: 10px 0 0 50px;
+}
+
+.hamburguesa {
+  display: none;
+}
+
+.header .Menu {
+  list-style: none;
+  display: flex;
+  padding-right: 0.6in;
+}
+
+.header .Menu .lista {
+  list-style: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.header .Menu .lista>a:hover {
+  color: rgb(240, 234, 234);
+}
+
+.header .Menu .lista a:hover>img {
+  background-image: url(images/icon-arrow-light.svg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.header .Menu .lista ul {
+  display: none;
+}
+
+.header .Menu .lista:hover>ul {
+  display: block;
+  text-align: left;
+  background: rgb(192, 181, 181);
+  border-radius: 3px;
+  position: absolute;
+  padding: 20px 30px 20px 15px;
+
+}
+
+.header .Menu .lista:hover>ul li {
+  display: block;
+  font-size: .8rem;
+}
+
+.header .Menu .lista:hover>ul li a {
+  color: #211941;
 }
 
 .slider-container {
   position: relative;
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .left-slide {
@@ -24,7 +101,7 @@ body {
   transition: transform 0.5s ease-in-out;
 }
 
-.left-slide > div {
+.left-slide>div {
   height: 100%;
   width: 100%;
   display: flex;
@@ -35,9 +112,9 @@ body {
 }
 
 .left-slide h1 {
-  font-size: 40px;
+  font-size: 3rem;
   margin-bottom: 10px;
-  margin-top: -30px;
+
 }
 
 .right-slide {
@@ -49,7 +126,7 @@ body {
   transition: transform 0.5s ease-in-out;
 }
 
-.right-slide > div {
+.right-slide>div {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -67,7 +144,7 @@ button {
 }
 
 button:hover {
-  color: #222;
+  color: rgb(0, 0, 0);
 }
 
 button:focus {
@@ -93,3 +170,106 @@ button:focus {
   border-bottom-right-radius: 5px;
 }
 
+.container-empresas {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 50px;
+  background: grey;
+}
+
+.hija1 {
+  margin: auto;
+  display: block;
+  width: 50%;
+}
+
+.hija1 a img {
+  margin: auto;
+  display: block;
+  width: 40%;
+}
+
+.hija2 {
+  margin: auto;
+  display: block;
+  width: 40%;
+}
+
+.hija2 a img {
+  margin: auto;
+  display: block;
+  width: 40%;
+}
+
+footer {
+  text-align: center;
+}
+
+/* Boton Wpp */
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.my-float {
+  margin-top: 16px;
+}
+
+/* ------------------Responsive---------------------- */
+
+@media screen and (max-width: 700px) {
+
+  body {
+    width: 700px;
+    overflow-x: hidden;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+  }
+  
+  .header .hamburguesa {
+    display: block;
+  }
+
+  .header .hamburguesa:hover {
+    cursor: pointer;
+  }
+
+  .header .hamburguesa--open {
+    content: url(images/icon-close.svg);
+  }
+
+  .Menu--mostrar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: none;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 25px 39px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 25px 39px -3px rgba(0, 0, 0, 0.1);
+    margin: 25px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+}

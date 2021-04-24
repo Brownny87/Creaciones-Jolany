@@ -18,13 +18,21 @@ const changeSlide = (direction) => {
     activeSlideIndex--;
     if (activeSlideIndex < 0) activeSlideIndex = slidesLength - 1;
   }
-  slideRight.style.transform = `translateY(-${
-    activeSlideIndex * sliderHeight
-  }px)`;
-  slideLeft.style.transform = `translateY(${
-    activeSlideIndex * sliderHeight
-  }px)`;
+  slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight
+    }px)`;
+  slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight
+    }px)`;
 };
 
 upButton.addEventListener("click", () => changeSlide("up"));
 downButton.addEventListener("click", () => changeSlide("down"));
+
+/* Responsive Movile */
+
+const menuContainer = document.querySelector('#Menu');
+const button = document.querySelector('#hamburguesa');
+
+button.addEventListener("click", () => {
+  menuContainer.classList.toggle("Menu--mostrar");
+  button.classList.toggle("hamburguesa--open");
+}, false);
