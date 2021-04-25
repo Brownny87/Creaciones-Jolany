@@ -66,6 +66,7 @@ body {
 
 .header .Menu .lista ul {
   display: none;
+  margin: 110px 0 0 30px;
 }
 
 .header .Menu .lista:hover>ul {
@@ -213,7 +214,7 @@ footer {
 }
 
 .box-redes {
-  padding: 10px 10px 0 10px;
+  padding: 10px 50px 0 50px;
 }
 
 /* Boton Wpp */
@@ -239,7 +240,7 @@ footer {
 
 /* ------------------Responsive---------------------- */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
 
   body {
     width: 700px;
