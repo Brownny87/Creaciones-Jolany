@@ -1,3 +1,5 @@
+
+/* Carrousel */
 const sliderContainer = document.querySelector(".slider-container");
 const slideRight = document.querySelector(".right-slide");
 const slideLeft = document.querySelector(".left-slide");
@@ -36,3 +38,24 @@ button.addEventListener("click", () => {
   menuContainer.classList.toggle("Menu--mostrar");
   button.classList.toggle("hamburguesa--open");
 }, false);
+
+// Function to change the nav-bar on scroll
+$(document).ready(function(){
+
+$(window).scroll(function(){
+  ($(window).scrollTop() >= 110) ? (
+      $('.header').addClass('scrolled')
+  ) : (
+      $('.header').removeClass('scrolled')
+  );
+});
+
+$(window).scroll(function(){
+  ($(window).scrollTop() >= 110) ? (
+      $('.logo').addClass('scrolled')
+  ) : (
+      $('.logo').removeClass('scrolled')
+  );
+});
+
+});
