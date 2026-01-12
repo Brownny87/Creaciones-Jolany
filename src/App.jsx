@@ -75,7 +75,7 @@ function App() {
               </div>
             ) : (
               <img 
-                src="/logo.png" 
+                src="logo.png" 
                 alt="Creaciones Jolany" 
                 className="h-12 md:h-16 object-contain" 
                 onError={() => setLogoError(true)}
