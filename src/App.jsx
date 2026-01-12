@@ -26,14 +26,8 @@ function App() {
     const whatsappText = `Hola, soy ${name}. Mi correo es ${email}. Mensaje: ${message}`;
     const whatsappUrl = `https://wa.me/573134302081?text=${encodeURIComponent(whatsappText)}`;
     
-    // Construct Mailto link
-    const mailtoUrl = `mailto:creaciones.jolany@hotmail.com?subject=Nuevo Mensaje Web de ${name}&body=${encodeURIComponent(message + "\n\nDe: " + name + "\nEmail: " + email)}`;
-
-    // Open WhatsApp (Primary action for "aviso")
+    // Open WhatsApp
     window.open(whatsappUrl, '_blank');
-    
-    // Try to open email client as well (might be blocked by popup blocker, but we try)
-    window.location.href = mailtoUrl;
     
     // Reset form
     setFormData({ name: '', email: '', message: '' });
