@@ -4,6 +4,40 @@ import { Shirt, Sparkles, School, Briefcase, Scissors, Phone, Mail, MapPin, Inst
 function App() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [logoError, setLogoError] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+    
+    // Construct WhatsApp message
+    const whatsappText = `Hola, soy ${name}. Mi correo es ${email}. Mensaje: ${message}`;
+    const whatsappUrl = `https://wa.me/573134302081?text=${encodeURIComponent(whatsappText)}`;
+    
+    // Construct Mailto link
+    const mailtoUrl = `mailto:creaciones.jolany@hotmail.com?subject=Nuevo Mensaje Web de ${name}&body=${encodeURIComponent(message + "\n\nDe: " + name + "\nEmail: " + email)}`;
+
+    // Open WhatsApp (Primary action for "aviso")
+    window.open(whatsappUrl, '_blank');
+    
+    // Try to open email client as well (might be blocked by popup blocker, but we try)
+    window.location.href = mailtoUrl;
+    
+    // Reset form
+    setFormData({ name: '', email: '', message: '' });
+  };
 
   const galleryItems = [
     {
@@ -332,18 +366,42 @@ function App() {
               </div>
             </div>
 
-            <form className="space-y-4 bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
+            <form onSubmit={handleSubmit} className="space-y-4 bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
               <div>
                 <label className="block text-gray-700 mb-2 font-medium" htmlFor="name">Nombre</label>
-                <input type="text" id="name" className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#354f32] focus:border-transparent transition" placeholder="Tu nombre" />
+                <input 
+                  type="text" 
+                  id="name" 
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#354f32] focus:border-transparent transition" 
+                  placeholder="Tu nombre" 
+                />
               </div>
               <div>
                 <label className="block text-gray-700 mb-2 font-medium" htmlFor="email">Email</label>
-                <input type="email" id="email" className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#354f32] focus:border-transparent transition" placeholder="tucorreo@ejemplo.com" />
+                <input 
+                  type="email" 
+                  id="email" 
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#354f32] focus:border-transparent transition" 
+                  placeholder="tucorreo@ejemplo.com" 
+                />
               </div>
               <div>
                 <label className="block text-gray-700 mb-2 font-medium" htmlFor="message">Mensaje</label>
-                <textarea id="message" rows="4" className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#354f32] focus:border-transparent transition" placeholder="¿En qué podemos ayudarte?"></textarea>
+                <textarea 
+                  id="message" 
+                  rows="4" 
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#354f32] focus:border-transparent transition" 
+                  placeholder="¿En qué podemos ayudarte?"
+                ></textarea>
               </div>
               <button type="submit" className="w-full bg-[#354f32] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#2b2e32] transition shadow-md">
                 Enviar Mensaje
